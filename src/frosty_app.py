@@ -3,7 +3,7 @@ import re
 import streamlit as st
 from prompts import get_system_prompt
 
-st.title("☃️ Frosty")
+st.title("☃️ Reactiv (Frosty)")
 
 # Initialize the chat messages history
 client = OpenAI(api_key=st.secrets.OPENAI_API_KEY)
@@ -31,7 +31,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
         response = ""
         resp_container = st.empty()
         for delta in client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
             stream=True,
         ):
